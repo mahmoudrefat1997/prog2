@@ -15,8 +15,9 @@ namespace WindowsFormsApp1
         public static class ExtBitmap
         {
             public static Bitmap CopyToSquareCanvas(this Bitmap sourceBitmap, int canvasWidthLenght)
-            {
-                float ratio = 1.0f;
+        {
+            //takes a bitmap image object and makes it a square image height = width
+            float ratio = 1.0f;
                 int maxSide = sourceBitmap.Width > sourceBitmap.Height ?
                               sourceBitmap.Width : sourceBitmap.Height;
 
@@ -47,6 +48,7 @@ namespace WindowsFormsApp1
             public static Bitmap ConvolutionFilter<T>(this Bitmap sourceBitmap, T filter)
                                              where T : ConvolutionFilterBase
             {
+            // applies a convolution on a bitmap image using a filter 
                 BitmapData sourceData = sourceBitmap.LockBits(new Rectangle(0, 0,
                                          sourceBitmap.Width, sourceBitmap.Height),
                                          ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
@@ -150,7 +152,7 @@ namespace WindowsFormsApp1
 
         public static string ASCIIFilter(this Bitmap sourceBitmap, int pixelBlockSize,
                                                                    int colorCount = 0)
-        {
+        {//mapping pixels to asci
             BitmapData sourceData = sourceBitmap.LockBits(new Rectangle(0, 0,
                                     sourceBitmap.Width, sourceBitmap.Height),
                                                       ImageLockMode.ReadOnly,
@@ -211,7 +213,7 @@ namespace WindowsFormsApp1
         }
 
         private static string GenerateRandomString(int maxSize)
-        {
+        {//unused method
             StringBuilder stringBuilder = new StringBuilder(maxSize);
             Random randomChar = new Random();
 
